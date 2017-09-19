@@ -20,26 +20,13 @@ service: packt-sample-lambda-api
 provider:
   name: aws
   runtime: nodejs6.10
-
-# you can overwrite defaults here
-#  stage: dev
-#  region: us-east-1
-
-# you can add statements to the Lambda function's IAM Role here
-#  iamRoleStatements:
-#    - Effect: "Allow"
-#      Action:
-#        - "s3:ListBucket"
-#      Resource: { "Fn::Join" : ["", ["arn:aws:s3:::", { "Ref" : "ServerlessDeploymentBucket" } ] ]  }
-#    - Effect: "Allow"
-#      Action:
-#        - "s3:PutObject"
-#      Resource:
-#        Fn::Join:
-#          - ""
-#          - - "arn:aws:s3:::"
-#            - "Ref" : "ServerlessDeploymentBucket"
-#            - "/*"
+  memorySize: 128
+  stage: dev
+  region: eu-west-1
+  iamRoleStatements:
+    - Effect: Allow
+      Action: s3:*
+      Resource: "*"
 
 # you can define service wide environment variables here
 #  environment:
@@ -59,7 +46,14 @@ functions:
     handler: handler.hello
     events:
       - http:
-          path: hello
+          path: hello/{name}
+          method: get
+
+  reads3:
+    handler: handler.reads3
+    events:
+      - http:
+          path: reads3
           method: get
 
 #    The following are a few example events you can configure

@@ -6,7 +6,7 @@ module.exports.hello = (event, context, callback) => {
   const response = {
     statusCode: 200,
     body: JSON.stringify({
-      message: 'Hello' + event.pathParameters.name + 'youve setup a serverless API',
+      message: 'Hello ' + event.pathParameters.name + ' youve setup a serverless API',
     }),
   };
   callback(null, response);

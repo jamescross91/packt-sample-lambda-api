@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/jamescross91/packt-sample-lambda-api#readme",
   "dependencies": {
-    "aws-sdk": "^2.57.0"
+    "aws-sdk": "^2.57.0",
+    "serverless": "^1.22.0"
   }
 }
